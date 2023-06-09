@@ -6,13 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items = ['item1', 'item2', 'item3', 'item4'];
-
-  addItem(newItem: string) {
-    this.items.push(newItem);
-  }
+  userName: string = '';
 }
 
-// currentItem = 'Pananosic';
 
 
