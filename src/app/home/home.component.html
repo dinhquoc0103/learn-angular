@@ -1,1 +1,51 @@
-<h1>Home Component</h1>
+<!-- <h1>Xin chào {{ name }}</h1>
+
+<form action="">
+    <label for="name">Name</label>
+    <input type="text" value="{{ name }}" name="" id="">
+    <input type="text" [(ngModel)]="name" name="name">
+    <br>
+    <label for="phone">Phone</label>
+    <input type="text" [value]="phone" name="" id="">
+    <br>
+    <label for="address">Address</label>
+    <input type="text" [value]="'my address: ' + address" name="" id="">
+    <br>
+</form> -->
+
+<!-- <h2 *ngIf="weight > 300; else elseBlock">you're fat</h2>
+
+<ng-template #elseBlock>
+    <h2>you're not fat</h2>
+</ng-template> -->
+
+<!-- <h2 *ngIf="weight > 300; then thenBlock else elseBlock"></h2>
+
+<ng-template #thenBlock>
+    <h2>you're fat</h2>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h2>you're not fat</h2>
+</ng-template> -->
+
+<!-- nếu điều kiện đúng thì sẽ as value là true -->
+<!-- <div *ngIf="weight > 300 as value; else elseBlock">{{value}}</div>
+<ng-template #elseBlock>Content to render when value is null.</ng-template> -->
+<!-- <h2>
+    Xin chào <p *ngIf="name != null">{{ name }}</p>
+</h2>
+
+<button style="cursor: pointer;" (click)="sayHello()">Click me</button> -->
+
+
+
+<!-- Dành cho class và style binding -->
+
+<!-- <p [class.sale]="onSale">Click to change state of sale</p> -->
+<!-- <p [class]="myClass">Click to change state of sale</p> -->
+
+
+<button (click)="onClickMe()">Click Me</button>
+
+<input type="text" (keydown.enter)="onEnter($event)">
