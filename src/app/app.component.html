@@ -1,3 +1,9 @@
 <h1>Learn Angular</h1>
 
-<app-home></app-home>
+<app-item-output (newItemEvent)="addItem($event)"></app-item-output> -->
+
+<ul>
+    <li *ngFor="let item of items">{{item}}</li>
+</ul>
+
+<!-- <app-item-detail [item]="currentItem"></app-item-detail> -->

@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'learn-angular';
+  items = ['item1', 'item2', 'item3', 'item4'];
+
+  addItem(newItem: string) {
+    this.items.push(newItem);
+  }
 }
+
+// currentItem = 'Pananosic';
+
+
