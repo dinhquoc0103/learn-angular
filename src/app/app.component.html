@@ -1,4 +1,14 @@
 <h1>Learn Angular</h1>
-<h2>*ngFor</h2>
+<h2>*ngSwitch</h2>
 
-<app-todos></app-todos>
+<ul [ngSwitch]="logInName">
+    <li *ngSwitchCase="'admin'">
+        <p>Admin is logged in...</p>
+    </li>
+    <li *ngSwitchCase="'user'">
+        <p>User is logged in...</p>
+    </li>
+    <li *ngSwitchDefault>
+        Please choose login name
+    </li>
+</ul>

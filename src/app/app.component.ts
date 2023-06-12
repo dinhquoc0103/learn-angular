@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  weight: number = 500;
+  logInName: string = 'admin';
 }
 
 
