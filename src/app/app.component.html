@@ -1,12 +1,4 @@
 <h1>Learn Angular</h1>
-<h2>*ngIf</h2>
+<h2>*ngFor</h2>
 
-<input type="text" [(ngModel)]="weight">
-<h1>Weight > 400 => fat</h1>
-<h2 *ngIf="weight > 400; then thenBlock else elseBlock"></h2>
-<ng-template #thenBlock>
-    <h2>You are fat</h2>
-</ng-template>
-<ng-template #elseBlock>
-    <h2>You are not fat</h2>
-</ng-template>
+<app-todos></app-todos>
