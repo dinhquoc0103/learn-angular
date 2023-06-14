@@ -1,0 +1,14 @@
+<h1>
+    Movie Grid
+</h1>
+
+<ul class="movie-list">
+    <li class="movie-card" *ngFor="let movie of movies">
+        <div class="movie-{{ movie.id }}">
+            <a routerLink="/movies/{{ movie.id }}">
+                <img src="{{ movie.thumb }}" alt="">
+                <p>{{ movie.name }}</p>
+            </a>
+        </div>
+    </li>
+</ul>

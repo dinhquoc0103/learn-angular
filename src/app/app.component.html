@@ -1,17 +1,30 @@
-<h1>Learn Angular</h1>
-<h2>@ViewChild</h2>
+<header>
+    <h1>Learn Angular</h1>
+    <h2>Routing</h2>
 
-<button #increaseBtn (click)="homeComp.handleIncreaseNumber()">Click to inscrease</button>
+    <nav>
+        <ul class="menu">
+            <li>
+                <a routerLink="/home">Home</a>
+            </li>
+            <li>
+                <a routerLink="/about">About</a>
+            </li>
+            <li>
+                <a routerLink="/movies">Movies</a>
+            </li>
+            <li>
+                <a routerLink="/auth/login">Login</a>
+            </li>
+            <li>
+                <a routerLink="/auth/register">Register</a>
+            </li>
+        </ul>
+    </nav>
+</header>
 
-<app-home #homeComp></app-home>
-<app-home #homeComp></app-home>
-<app-home #homeComp></app-home>
-<app-home #homeComp></app-home>
-<app-home #homeComp></app-home>
-<app-home #homeComp></app-home>
+<router-outlet></router-outlet>
 
-
-<!-- (click)="handleIncreaseValueForHome()" -->
-<!-- <button style="cursor: pointer;" (click)="homeComp.handleIncreaseNumber()">
-    Click to inscrease
-</button> -->
+<footer>
+    @Copyright Quoc 2023;
+</footer>
