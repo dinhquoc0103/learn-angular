@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { moviesData } from '../../data/movies-data';
-
-
-interface Movie {
-  id: number;
-  name: string;
-  thumb: string;
-}
+import { Movie } from 'src/app/models/movie';
 
 @Component({
   selector: 'app-movie-grid',

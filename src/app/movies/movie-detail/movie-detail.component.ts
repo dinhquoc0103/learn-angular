@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { moviesData } from '../../data/movies-data';
+import { Movie } from 'src/app/models/movie';
+import { MoviesService } from '../services/movies.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -8,20 +9,27 @@ import { moviesData } from '../../data/movies-data';
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
-  name: string = '';
-  thumb: string = '';
+  movie: Movie = {
+    id: 0,
+    name: '',
+    thumb: '',
+  };
 
-  constructor(private route: ActivatedRoute) {
-
+  constructor(private route: ActivatedRoute, private moviesService: MoviesService) {
   }
 
   ngOnInit(): void {
+    this.getMovie();
+  }
+
+  getMovie() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       let movieId = Number(params.get('id'));
-      const movie = moviesData.find((movie) => movie.id === movieId);
-      if (movie) {
-        this.name = movie.name;
-        this.thumb = movie.thumb;
+      const movieObj = this.moviesService.getMovieById(movieId);
+      console.log(movieObj);
+
+      if (movieObj) {
+        this.movie = movieObj;
       }
     })
   }
