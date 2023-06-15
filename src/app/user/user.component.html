@@ -1,0 +1,18 @@
+<!-- <ul>
+    <li><b>Name:</b> {{ user.name }}</li>
+    <li><b>Nơi sinh:</b> {{ user.address | uppercase }}</li>
+    <li><b>Ngày sinh:</b> {{ user.birthday | date:'dd/MM/YYYY'}}</li>
+</ul> -->
+
+<!-- <ul>
+    <li><b>Name:</b> {{ user.name }}</li>
+    <li><b>Nơi sinh:</b> {{ user.address }}</li>
+    <li><b>Ngày sinh:</b> {{ user.birthday }}</li>
+</ul> -->
+
+
+<ul>
+    <li><b>Name:</b> {{ user.name }}</li>
+    <li><b>Nơi sinh:</b> {{ user.address | uppercase | lowercase }}</li>
+    <li><b>Ngày sinh:</b> {{ user.birthday | date:'dd/MM/YYYY'}}</li>
+</ul>

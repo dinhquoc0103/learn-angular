@@ -1,5 +1,4 @@
 import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
