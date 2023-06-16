@@ -1,0 +1,61 @@
+<div class="song-block">
+    <div class="adding-song">
+        <h2>Add New Song</h2>
+        <form [formGroup]="addingSongForm" (ngSubmit)="handleSubmitAddSong()">
+            <label for="">Song</label>
+            <br>
+            <input type=" text" formControlName="name">
+            <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                <p *ngIf="name?.errors?.['required']" style="color: red">Name is required</p>
+                <p *ngIf="name?.errors?.['minlength']" style="color: red">Min length is 6 charactor</p>
+            </div>
+
+
+            <br>
+            <br>
+
+            <label for="">Singer</label>
+            <br>
+            <input type=" text" formControlName="singer">
+            <div *ngIf="singer?.invalid && (singer?.dirty || singer?.touched)">
+                <p *ngIf="singer?.errors?.['required']" style="color: red">Singer is required</p>
+            </div>
+
+
+            <br>
+            <br>
+            <label for="">Year</label>
+            <br>
+            <input type="text" formControlName="year">
+            <div *ngIf="year?.invalid && (year?.dirty || year?.touched)">
+                <p *ngIf="year?.errors?.['required']" style="color: red">Year is required</p>
+                <p *ngIf="year?.errors?.['isNumeric']" style="color: red">Year have to numeric</p>
+            </div>
+
+
+
+            <br>
+            <br>
+
+            <button type="submit" style="cursor: pointer;" [disabled]="addingSongForm.invalid">Add song</button>
+        </form>
+        <pre>{{ addingSongForm.value | json }}</pre>
+    </div>
+    <br>
+
+    <ul class="song-list">
+        <li *ngFor="let item of songs; index as i">
+
+            <p>{{ i + 1 }}. {{ item.name }} - {{ item.singer }} ({{ item.year }})</p>
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+
+<!-- <input type="text" [formControl]="addingSongForm.controls.name"> -->
+<!-- <input type="text" [formControl]="addingSongForm.controls.singer"> -->
+<!-- <input type="text" [formControl]="addingSongForm.controls.year"> -->
