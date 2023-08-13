@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Observer, from, fromEvent, interval, of, timer } from 'rxjs';
+import { Observable, Observer, Subject, from, fromEvent, interval, of, timer } from 'rxjs';
+import { take } from "rxjs/operators";
 
 @Component({
   selector: 'app-home',
@@ -7,163 +8,325 @@ import { Observable, Observer, from, fromEvent, interval, of, timer } from 'rxjs
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  counter: number = 0;
-  rate: number = 3000;
-  lastClick: number = Date.now() - this.rate;
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  handleIncreaseCounter(event: any) {
+  handleClick(event: any) {
+    // const foo = interval(500).pipe(take(5));
 
-    // const observable = new Observable(function subscribe(subscriber) {
-    //   const id = setInterval(() => {
-    //     subscriber.next('hi');
-    //   }, 1000);
-    // });
+    // const observerBaz = {
+    //   next: (x: number) => console.log('first next: ' + x),
+    //   error: (err: string) => console.log('first error: ' + err),
+    //   complete: () => console.log('first done')
+    // };
 
+    // const observerBar = {
+    //   next: (x: number) => console.log('second next: ' + x),
+    //   error: (err: string) => console.log('second error: ' + err),
+    //   complete: () => console.log('second done')
+    // };
 
-    // const arr = [1, 2, 3, 4, 5];
-    // const fromArrObservable = from(arr);
+    // foo.subscribe(observerBaz);
 
-    // fromArrObservable.subscribe({
-    //   next(value) {
-    //     console.log(value);
-    //   },
-    // });
-
-
-
-
-    // if ((Date.now() - this.lastClick) >= this.rate) {
-    //   this.counter = this.counter + 1;
-    //   this.lastClick = Date.now();
-    // }
-    // else {
-    //   console.log('Wait 3s for next click');
-    // }
-
-    // const observale = new Observable((observer) => {
-    //   setTimeout(() => {
-    //     observer.next('234');
-    //     observer.complete();
-    //   }, 1000);
-    // });
-
-    // const subscription = observale.subscribe({
-    //   next: (value) => {
-    //     console.log(typeof value);
-    //     console.log(typeof Number(value));
-    //   },
-    //   complete: () => console.log("complete")
-    // });
-
-    // subscription.unsubscribe();
-
-    // console.log(subscription);
+    // setTimeout(() => {
+    //   foo.subscribe(observerBar);
+    // }, 1500);
 
 
+    // const foo = interval(500).pipe(take(5));
 
-    // const sequence = new Observable((subscriber) => {
-    //   subscriber.next(1);
-    //   subscriber.next(2);
-    //   subscriber.next(3);
-    //   subscriber.next(4);
-    //   subscriber.next(5);
-    //   subscriber.complete();
-    // });
-
-    // sequence.subscribe({
-    //   next(num) {
-    //     console.log(num);
-    //   },
-    //   complete() {
-    //     console.log('Finished sequence');
-    //   },
-    // });
-
-    // Disposing observable exxecution
-    // let disposingTime = 0;
-    // const stopTime = 6000;
-    // const observable = new Observable((observer) => {
-    //   let count = 0;
-
-    //   const intervalId = setInterval(() => {
-    //     disposingTime = disposingTime + 1000;
-
-    //     observer.next(++count);
-
-    //     // if (disposingTime === stopTime) {
-    //     //   observer.complete();
-    //     // }
-    //   }, 1000);
-
-    //   return () => {
-    //     console.log('Luôn được gọi cuối cùng');
-
-    //     clearInterval(intervalId);
+    // const observerB = {
+    //   observers: [],
+    //   addObserver(observer: any) {
+    //     this.observers.push();
     //   }
+    // }
+
+    // const observerBaz = {
+    //   next: (x: number) => console.log('first next: ' + x),
+    //   error: (err: string) => console.log('first error: ' + err),
+    //   complete: () => console.log('first done')
+    // };
+
+    // const observerBar = {
+    //   next: (x: number) => console.log('second next: ' + x),
+    //   error: (err: string) => console.log('second error: ' + err),
+    //   complete: () => console.log('second done')
+    // };
+
+    // foo.subscribe(observerBaz);
+
+    // setTimeout(() => {
+    //   foo.subscribe(observerBar);
+    // }, 1500);
+
+    // 1
+    // const subject = new Subject<number>();
+
+    // subject.subscribe({
+    //   next(value) {
+    //     console.log('Observer A:', value);
+    //   },
     // });
 
-    // const subscription = observable.subscribe({
-    //   next(count) {
-    //     console.log(count);
+    // subject.subscribe({
+    //   next(value) {
+    //     console.log('Observer B:', value);
+    //   },
+    // });
+
+    // subject.subscribe({
+    //   next(value) {
+    //     console.log('Observer C:', value);
     //   },
     //   complete() {
-    //     console.log('Finished observable');
+    //     console.log('Observer C complete');
     //   },
     // });
 
-    // setTimeout(() => {
-    //   subscription.unsubscribe();
-    // }, stopTime);
+    // subject.next(1);
+    // subject.next(2);
+    // subject.complete();
 
+    // 2
+    // const subject = new Subject<number>();
 
-    // const newObservable = new Observable((observer) => {
-    //   setInterval(() => {
-    //     observer.next('Learn observable rxjs in Angular');
-    //   }, 1000);
-    // });
-
-    // const childSubscription = newObservable.subscribe({
+    // subject.subscribe({
     //   next(value) {
-    //     console.log(value);
+    //     console.log('Observer A:', value);
     //   },
-    // })
-
-    // subscription.add(childSubscription);
-
-    // setTimeout(() => {
-    //   subscription.unsubscribe();
-    // }, stopTime);
-
-
-
-    // const observable = interval(1000);
-    // const subscription = observable.subscribe(val => console.log(val));
-
-    // setTimeout(() => {
-    //   subscription.unsubscribe();
-    // }, 8000);
-
-    // const observable1 = interval(1000);
-    // const observable2 = interval(2000);
-    // const subscription = observable1.subscribe(val => console.log('first:', val));
-    // const childSubscription = observable2.subscribe(val => console.log('second:', val));
-
-    // subscription.add(childSubscription);
-
-    // setTimeout(() => {
-    //   subscription.unsubscribe();
-    // }, 8000);
-
-    // const observable = new Observable<string>((subscriber) => {
-    //   setInterval(() => {
-    //     subscriber.next(8); // eps T type là string nhưng gửi dữ liệu từ observable vào observer là number chắc chắn lỗi.
-    //   }, 1000);
     // });
+
+    // subject.subscribe({
+    //   next(value) {
+    //     console.log('Observer B:', value);
+    //   },
+    //   complete() {
+    //     console.log('Observer B complete');
+    //   },
+    // });
+
+    // const observable = from([1, 2, 3, 4, 5]);
+    // observable.subscribe(subject);
+
+    // function addNumberSequence(number: number) {
+    //   number = number + 1;
+    //   number = number + 2;
+    //   number = number + 3;
+    //   number = number + 4;
+    //   number = number + 5;
+    //   return number;
+    // }
+
+    // function addNumberSequence(number: number) {
+    //   for (let i = 1; i <= 5; i++) {
+    //     number = number + i;
+    //   }
+    //   return number;
+    // }
+
+
+    // console.log(addNumberSequence(8));
+
+    // const SUCCESS_MESS = 'Thành công';
+
+    // console.log(SUCCESS_MESS, 'Bạn đã đăng nhập vào website');
+    // console.log(SUCCESS_MESS, 'Bạn đã đặt hàng');
+
+
+
+    // class ValidatePerson {
+    //   constructor(private name: string, private age: number) {
+    //     this.name = name;
+    //     this.age = age;
+    //   }
+
+    //   ValidateName(name: string) {
+    //     if (name.length > 3) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   }
+
+    //   ValidateAge(age: number) {
+    //     if (age > 18) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   }
+
+    //   Display() {
+    //     if (this.ValidateName(this.name) && this.ValidateAge(this.age)) {
+    //       console.log(`Name: ${this.name} and Age: ${this.age}`);
+    //     } else {
+    //       console.log('Invalid');
+    //     }
+    //   }
+    // }
+
+    // class DisplayPerson {
+    //   constructor(private name: string, private age: number, private validate: ValidatePerson) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.validate = new ValidatePerson(this.name, this.age);
+    //   }
+
+    //   Display() {
+    //     if (
+    //       this.validate.ValidateName(this.name) &&
+    //       this.validate.ValidateAge(this.age)
+    //     ) {
+    //       console.log(`Name: ${this.name} and Age: ${this.age}`);
+    //     } else {
+    //       console.log('Invalid');
+    //     }
+    //   }
+    // }
+
+    //
+
+
+    // const iceCreamFlavors = ['chocolate', 'vanilla'];
+
+    // class makeIceCream {
+    //   constructor(private flavor: string) {
+    //     this.flavor = flavor;
+    //   }
+    //   make() {
+    //     if (iceCreamFlavors.indexOf(this.flavor) > -1) {
+    //       console.log('Great success. You now have ice cream.');
+    //     } else {
+    //       console.log('Epic fail. No ice cream for you.');
+    //     }
+    //   }
+    // }
+
+    // class addIceCream {
+    //   constructor(private flavor: string) {
+    //     this.flavor = flavor;
+    //   }
+    //   add() {
+    //     iceCreamFlavors.push(this.flavor);
+    //   }
+    // }
+
+    // let addStrawberryFlavor = new addIceCream('strawberry');
+    // addStrawberryFlavor.add();
+    // let makeStrawberryFlavor = new makeIceCream('strawberry');
+    // makeStrawberryFlavor.make();
+
+
+    // class Shape {
+
+    //   constructor(protected color: string = '') {
+
+    //   }
+
+    //   setColor(color: string) {
+    //     this.color = color;
+    //   }
+
+    //   getColor() {
+    //     return this.color;
+    //   }
+    // }
+
+    // class Rectangle extends Shape {
+    //   protected width: number = 0;
+    //   protected height: number = 0;
+    //   protected color: string = '';
+
+    //   constructor(color: string = '') {
+    //     super(color)
+    //   }
+
+    //   setWidth(width: number) {
+    //     this.width = width;
+    //   }
+
+    //   setHeight(height: number) {
+    //     this.height = height;
+    //   }
+
+    //   getArea() {
+    //     return this.width * this.height;
+    //   }
+    // }
+
+    // class Square extends Shape {
+    //   protected side: number = 0;
+
+    //   constructor(color: string = '') {
+    //     super(color)
+    //   }
+
+    //   setSide(side: number) {
+    //     this.side = side;
+    //   }
+
+    //   getArea() {
+    //     return this.side * this.side;
+    //   }
+    // }
+
+    // let rectangle = new Rectangle();
+    // rectangle.setWidth(10);
+    // rectangle.setHeight(5);
+    // console.log(rectangle.getArea()); // 50
+
+
+    // let square = new Square();
+    // square.setWidth(10);
+    // square.setHeight(5);
+    // console.log(square.getArea()); // 25
+
+
+    // interface IShape {
+    //   calculateArea(): number;
+    //   calculateVolume(): number;
+    // }
+
+
+    // class Square implements IShape {
+    //   calculateArea() {
+
+    //   }
+    //   calculateVolume() {
+    //     //...
+    //   }
+    // }
+
+    // class Cuboid implements IShape {
+    //   calculateArea() {
+    //     //...
+    //   }
+    //   calculateVolume() {
+    //     //...
+    //   }
+    // }
+
+    // class Rectangle implements IShape {
+    //   calculateArea() {
+    //     //...
+    //   }
+    //   calculateVolume() {
+    //     //...
+    //   }
+    // }
+
+    interface IShape {
+      calculateArea(): number;
+    }
+
+    interface IThreeDimensionalShape {
+      calculateArea(): number;
+      calculateVolume(): number;
+    }
+
 
 
   }

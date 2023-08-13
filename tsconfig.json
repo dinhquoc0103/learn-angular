@@ -16,7 +16,7 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    // "strictPropertyInitialization": false, thuộc tính này true sẽ bắt buộc khởi tạo giá trị cho các thuộc tính trong class
+    "strictPropertyInitialization": false, // thuộc tính này true sẽ bắt buộc khởi tạo giá trị cho các thuộc tính trong class
     "lib": [
       "es2018",
       "dom"
